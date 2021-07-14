@@ -1,10 +1,7 @@
-# exo-test
+## How to use
+See slack for a Manifest and a LicenseUrl. Set these values to MANIFEST and LICENSE in MainActivity.kt
 
-Little project to play RiksTV content in ExoPlayer. Useful if you want to figure out if our player implementation is bad or if the content also fails in vanilla ExoPlayer
+In the main branch the packageName/applicationId is set to no.rikstv.atv and in this branch 4K does not work
 
-### How to use
-Enter your token and the asset you want to play in MainActivity
+In the branch no.rikstv.atv.test everything is the same, except we've changed the packageName/applicationId. Here 4K works
 
-????
-
-Profit
