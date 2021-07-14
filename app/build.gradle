@@ -19,22 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    def SIGN_KEYSTORE_PATH = System.getenv("SIGN_KEYSTORE_PATH") ?: "../no.rikstv.atv.keystore"
-    def SIGN_KEYSTORE_PASSWORD = System.getenv("SIGN_KEYSTORE_PASSWORD") ?: "wrongpassword"
-    def SIGN_KEY_ALIAS = System.getenv("SIGN_KEY_ALIAS") ?: "atv"
-    def SIGN_KEY_PASSWORD = System.getenv("SIGN_KEY_PASSWORD") ?: "wrongpassword"
-    signingConfigs {
-        debug {
-
-            storeFile file(SIGN_KEYSTORE_PATH)
-            storePassword SIGN_KEYSTORE_PASSWORD
-            keyAlias SIGN_KEY_ALIAS
-            keyPassword SIGN_KEY_PASSWORD
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
-    }
+    
     buildTypes {
         debug {
             debuggable true
