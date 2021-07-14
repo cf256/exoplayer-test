@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    buildFeatures {
+        viewBinding true
+    }
+    defaultConfig {
+        applicationId "no.rikstv.atv"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 100000000
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    def SIGN_KEYSTORE_PATH = System.getenv("SIGN_KEYSTORE_PATH") ?: "../no.rikstv.atv.keystore"
+    def SIGN_KEYSTORE_PASSWORD = System.getenv("SIGN_KEYSTORE_PASSWORD") ?: "wrongpassword"
+    def SIGN_KEY_ALIAS = System.getenv("SIGN_KEY_ALIAS") ?: "atv"
+    def SIGN_KEY_PASSWORD = System.getenv("SIGN_KEY_PASSWORD") ?: "wrongpassword"
+    signingConfigs {
+        debug {
+
+            storeFile file(SIGN_KEYSTORE_PATH)
+            storePassword SIGN_KEYSTORE_PASSWORD
+            keyAlias SIGN_KEY_ALIAS
+            keyPassword SIGN_KEY_PASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation project(":mux-r2.13.1")
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0'
+
+    implementation 'com.squareup.moshi:moshi:1.11.0'
+    implementation 'com.squareup.moshi:moshi-adapters:1.11.0'
+    kapt('com.squareup.moshi:moshi-kotlin-codegen:1.11.0')
+    implementation group: 'org.checkerframework', name: 'checker-compat-qual', version: '2.5.5'
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
