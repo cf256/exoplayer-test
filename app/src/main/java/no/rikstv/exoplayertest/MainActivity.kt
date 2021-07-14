@@ -9,7 +9,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.DebugTextViewHelper
 import com.google.android.exoplayer2.util.EventLogger
-import no.rikstv.atv.databinding.ActivityMainBinding
+import no.rikstv.atv.test.databinding.ActivityMainBinding
 
 const val TAG = "MainActivity"
 const val MANIFEST =

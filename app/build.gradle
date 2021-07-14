@@ -11,7 +11,7 @@ android {
         viewBinding true
     }
     defaultConfig {
-        applicationId "no.rikstv.atv"
+        applicationId "no.rikstv.atv.test"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 100000000
